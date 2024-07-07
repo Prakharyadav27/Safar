@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+
+<body>
+
+    <div class="bg-gray-100">
+
+
+        <div class="container mx-auto py-8">
+            <!--  -->
+            <a href="/home" class="px-4 py-2 bg-blue-500 rounded-lg text-white font-bold inline-block mb-5"> <i
+                    class="fa-solid fa-backward fa-bounce"></i> Back</a>
+            <!--  -->
+            <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
+
+                <div class="col-span-4 sm:col-span-3">
+                    <div class="bg-white shadow rounded-lg p-6">
+                        <div class="flex flex-col items-center">
+                            <img src="../images/uploads/<%=post.file%>"
+                                class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
+
+                            </img>
+                            <h1 class="text-xl font-bold">
+                                <%=post.title %>
+                            </h1>
+                            <p class="text-gray-700">
+                                <%=post.city%>
+                            </p>
+
+                            <div class="mt-6 flex flex-wrap gap-4 justify-center">
+                                <form action="/like/<%= post._id %>" method="POST">
+                                    <button type="submit"
+                                        class="px-3 py-2 text-sm bg-purple-600 rounded-lg text-white font-bold hover:bg-purple-700">Like
+                                        🤍 (<%= post.like.length %>)</button>
+                                </form>
+
+                                <div class="mt-4 flex flex-wrap gap-4 justify-center ">
+                                    <form action="/comment/<%= post._id %>" method="post">
+                                        <textarea cols="30" placeholder="Comment on post" class="p-2 bg-gray-300"
+                                            name="comment" id=""></textarea>
+                                        <button
+                                            class="px-3 py-2 text-sm bg-purple-600 rounded-lg text-white font-bold hover:bg-purple-700"
+                                            type="submit">
+                                            Comment ✏️
+                                        </button>
+                                    </form>
+                                </div>
+
+
+                                <!--  -->
+                                <section class="w-full rounded-lg border-2 border-purple-600 p-4 my-8 mx-auto max-w-xl">
+                                    <h3 class="font-os text-lg font-bold">Comment</h3>
+
+                                    <% if (post && post.comment && post.comment.length> 0) { %>
+                                        <% post.comment.forEach(comment=> { %>
+                                            <div class="flex mt-4">
+                                                <div
+                                                    class="w-14 h-14 rounded-full bg-purple-400/50 flex-shrink-0 flex items-center justify-center">
+                                                    <img class="h-12 w-12 rounded-full object-cover"
+                                                        src=<%=comment.img%> alt="">
+                                                </div>
+
+                                                <div class="ml-3">
+                                                    <div class="font-medium text-purple-800">
+                                                        <%= comment.name %>
+                                                    </div>
+
+                                                    <div class="mt-2 text-purple-800">
+                                                        <%= comment.comment %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                                                <% } else { %>
+                                                    <p>No comment yet.</p>
+                                                    <% } %>
+                                </section>
+
+
+
+
+
+
+
+
+
+                                <!--  -->
+
+                            </div>
+                        </div>
+                        <hr class="my-6 border-t border-gray-300">
+
+                    </div>
+                </div>
+                <div class="col-span-4 sm:col-span-9">
+                    <div class="bg-gray-100 shadow rounded-lg p-6">
+                        <h2 class="text-xl font-bold mb-4">Author's Experience</h2>
+                        <p class="text-gray-700">
+                            <%=post.description%>
+                        </p>
+
+                        <div class="mt-5 flex justify-center">
+                            <form action="https://www.google.com/search" method="GET" target="_blank">
+                                <input type="hidden" name="q" value="<%=post.title%>">
+                                <button type="submit"
+                                    class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded">Search on
+                                    Google</button>
+                            </form>
+                        </div>
+
+                        <h2 class="text-xl font-bold mt-6 mb-4">Other Detail's</h2>
+                        <div class="mb-6">
+                            <div class="flex justify-between flex-wrap gap-2 w-full">
+                                <span class="text-gray-700 font-bold">Cost : <span class="font-medium">
+                                        <%= post.cost %>
+                                    </span></span>
+
+                            </div>
+
+                        </div>
+                        <div class="mb-6">
+                            <div class="flex justify-between flex-wrap gap-2 w-full">
+                                <span class="text-gray-700 font-bold">Location Cordinate's :<span
+                                        class="font-medium ml-1">
+                                        <%= post.cordinate %>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex justify-between flex-wrap gap-2 w-full">
+                                    <span class="text-gray-700 font-bold">Bought to you by : <span
+                                            class="font-medium ml-1">
+                                            <%= user.username %>
+                                        </span></span>
+                                    <p>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                window.embeddedChatbotConfig = {
+                    chatbotId: "JAZsMEEiJ3Qf94G1rAsjg",
+                    domain: "www.chatbase.co"
+                }
+            </script>
+            <script src="https://www.chatbase.co/embed.min.js" chatbotId="JAZsMEEiJ3Qf94G1rAsjg"
+                domain="www.chatbase.co" defer>
+                </script>

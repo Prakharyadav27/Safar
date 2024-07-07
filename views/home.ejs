@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Replace Tailwind CSS with CDN or local setup -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Bootstrap and Font Awesome links remain for specific styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Additional custom styles can be added here */
+        .card {
+            width: 320px; /* Adjust as needed */
+            height: auto; /* Ensure height adjusts based on content */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-screen-xl mx-auto p-4 flex justify-between items-center">
+            <a href="https://flowbite.com/" class="flex items-center space-x-3">
+                <img src="data:image/png;base64,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" class="h-8" alt="Flowbite Logo">
+                <span class="text-3xl text-red-700 font-bold tracking-wider">Safar</span>
+            </a>
+            <div class="flex space-x-3">
+                <a href="http://localhost:4000/"
+                    class="px-4 py-2 text-sm font-medium text-white bg-green-400 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    ChatRoom 💬</a>
+                <a href="/logout"
+                    class="px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-purple-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Logout</a>
+                <button type="button"
+                    class="p-2 w-10 h-10 flex items-center justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Create Post Button -->
+    <a href="/createpost"
+        class="inline-flex items-center mt-10 ml-10 px-10 py-3.5 text-base font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <i class="fa-solid fa-plus fa-shake mr-3"></i>
+        Create new Post
+    </a>
+
+    <!-- Welcome Message -->
+    <h1 class="m-10 text-3xl">Welcome, <span class="text-blue-700 font-bold"><%= user.username %></span> 👋</h1>
+
+    <!-- Horizontal Line -->
+    <hr class="m-10">
+
+    <!-- Posts Section -->
+    <div class="flex flex-wrap m-10 space-x-6">
+        <% posts.forEach(post => { %>
+        <div class="card">
+            <img src="../images/uploads/<%= post.file %>" class="card-img-top" alt="Post Image">
+            <div class="card-body">
+                <h3 class="card-title text-2xl font-bold mb-2"><%= post.title %></h3>
+                <p class="card-text text-lg"><%= post.description %></p>
+            </div>
+            <div class="card-footer flex justify-evenly items-center p-4">
+                <a href="/view/<%= post._id %>"
+                    class="px-3 py-2 text-sm bg-purple-600 rounded-lg text-white font-bold hover:bg-purple-700">View
+                    More</a>
+                    <form action="/report/<%= post._id %>" method="get">
+                        <button type="submit"
+                            class="px-4 py-2 text-sm bg-yellow-400 rounded-lg text-white font-bold hover:bg-yellow-700">Report</button>
+                    </form>
+              
+            </div>
+           <div class="flex items-center justify-center mb-2">
+          
+           </div>
+
+        </div>
+        <% }); %>
+    </div>
+
+    <script>
+        window.embeddedChatbotConfig = {
+        chatbotId: "JAZsMEEiJ3Qf94G1rAsjg",
+        domain: "www.chatbase.co"
+        }
+        </script>
+        <script
+        src="https://www.chatbase.co/embed.min.js"
+        chatbotId="JAZsMEEiJ3Qf94G1rAsjg"
+        domain="www.chatbase.co"
+        defer>
+        </script>
+
+</body>
+
+</html>
